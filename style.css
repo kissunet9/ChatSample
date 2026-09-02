@@ -1,0 +1,484 @@
+/* ==========================================================================
+   ChatSample - Light Mode Design System & Styles
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Light Theme Color Palette */
+  --bg-main: #f8fafc;
+  --bg-card: #ffffff;
+  --bg-glass: rgba(255, 255, 255, 0.85);
+  --bg-hover: #f1f5f9;
+  --bg-active: #e2e8f0;
+  
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+  --text-white: #ffffff;
+
+  /* Brand Accents */
+  --primary: #4f46e5;
+  --primary-hover: #4338ca;
+  --primary-light: #eeeffe;
+  --primary-gradient: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+  
+  /* Status Colors */
+  --success-bg: #dcfce7;
+  --success-text: #15803d;
+  --danger-bg: #fee2e2;
+  --danger-text: #b91c1c;
+  
+  /* UI Borders & Shadows */
+  --border-color: #e2e8f0;
+  --border-focus: #818cf8;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.06), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+  --shadow-popup: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+  
+  --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Reset & Base Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Main Container Layout */
+.app-container {
+  width: 100%;
+  max-width: 900px;
+  height: 85vh;
+  max-height: 800px;
+  background-color: var(--bg-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Header */
+.app-header {
+  height: 72px;
+  padding: 0 28px;
+  background: var(--bg-glass);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+}
+
+.brand-logo svg {
+  color: var(--primary);
+}
+
+.badge-light {
+  background: var(--primary-light);
+  color: var(--primary);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+}
+
+/* Views */
+.view {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* --------------------------------------------------------------------------
+   1. Chat List View
+   -------------------------------------------------------------------------- */
+.list-view-header {
+  padding: 24px 28px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.list-title-group h2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.list-title-group p {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  border: none;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-primary {
+  background: var(--primary-gradient);
+  color: var(--text-white);
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
+}
+
+.btn-primary:hover {
+  opacity: 0.95;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(79, 70, 229, 0.35);
+}
+
+.btn-secondary {
+  background-color: var(--bg-hover);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+  background-color: var(--bg-active);
+  color: var(--text-primary);
+}
+
+.btn-danger {
+  background-color: var(--danger-bg);
+  color: var(--danger-text);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.btn-danger:hover {
+  background-color: #fca5a5;
+}
+
+/* Room Grid & Cards */
+.room-list-container {
+  flex: 1;
+  padding: 12px 28px 28px;
+  overflow-y: auto;
+}
+
+.room-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.room-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.room-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--border-focus);
+}
+
+.room-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.room-card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+  word-break: break-all;
+  line-height: 1.3;
+}
+
+.count-badge {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+}
+
+.count-badge.available {
+  background-color: var(--success-bg);
+  color: var(--success-text);
+}
+
+.count-badge.full {
+  background-color: var(--danger-bg);
+  color: var(--danger-text);
+}
+
+.room-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--border-color);
+}
+
+.creator-info {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+  color: var(--text-muted);
+}
+
+.empty-state svg {
+  margin-bottom: 16px;
+  color: var(--border-focus);
+}
+
+/* --------------------------------------------------------------------------
+   2. Chat Room View
+   -------------------------------------------------------------------------- */
+.chat-room-header {
+  padding: 16px 24px;
+  background-color: var(--bg-card);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.room-info-group h3 {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.room-info-meta {
+  font-size: 12px;
+  color: var(--text-secondary);
+  display: flex;
+  gap: 12px;
+  margin-top: 3px;
+}
+
+/* Messages Box */
+.messages-container {
+  flex: 1;
+  padding: 24px;
+  overflow-y: auto;
+  background-color: #f8fafc;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.message-wrapper {
+  display: flex;
+  flex-direction: column;
+  max-width: 70%;
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.message-wrapper.mine {
+  align-self: flex-end;
+  align-items: flex-end;
+}
+
+.message-wrapper.other {
+  align-self: flex-start;
+  align-items: flex-start;
+}
+
+.sender-nickname {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+  padding: 0 4px;
+}
+
+.message-bubble {
+  padding: 12px 16px;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  line-height: 1.5;
+  word-break: break-word;
+  box-shadow: var(--shadow-sm);
+}
+
+.message-wrapper.mine .message-bubble {
+  background: var(--primary-gradient);
+  color: var(--text-white);
+  border-bottom-right-radius: 2px;
+}
+
+.message-wrapper.other .message-bubble {
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  border-bottom-left-radius: 2px;
+}
+
+.message-time {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 4px;
+  padding: 0 4px;
+}
+
+/* Message Input Form */
+.message-input-form {
+  padding: 16px 24px;
+  background-color: var(--bg-card);
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  gap: 12px;
+}
+
+.input-field {
+  flex: 1;
+  padding: 12px 16px;
+  font-size: 14px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  outline: none;
+  transition: var(--transition);
+}
+
+.input-field:focus {
+  border-color: var(--primary);
+  background-color: var(--bg-card);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12);
+}
+
+/* --------------------------------------------------------------------------
+   3. Dialog / Modal System
+   -------------------------------------------------------------------------- */
+.modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(15, 23, 42, 0.4);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  animation: fadeIn 0.15s ease-out;
+}
+
+.modal-card {
+  width: 90%;
+  max-width: 420px;
+  background-color: var(--bg-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-popup);
+  border: 1px solid var(--border-color);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.modal-header h3 {
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.modal-header p {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 8px;
+}
